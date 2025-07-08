@@ -14,7 +14,9 @@
         <h1>Módulo de Inserción</h1>
         <hr>
         <form action="" method="post">
-            <input type="text" name="txtNom" placeholder="Nombre">
+            <label for="txtNom">Nombre:</label>
+            <input type="text" name="txtNom" required>
+            <br><br>
             <select name="cbxFam" id="cbxFam">
                 <option>Seleccione Familia</option>
                 <?php
@@ -27,9 +29,11 @@
                     }
                 ?>
             </select>
-            <br>
+            <br><br>
             <input type="submit" value="Guardar">
         </form>
+        <br>
+        <a href="cargarCategorias.php">Volver al listado</a>
     </div>
 </body>
 </html>

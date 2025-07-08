@@ -11,10 +11,10 @@
         <hr>
         <form action="" method="post">
             <label for="txtNom">Nombre:</label>
-            <input type="text" name="txtNom" id="txtNom" placeholder="Nombre" required>
+            <input type="text" name="txtNom" id="txtNom" required>
             <br><br>
             <label for="txtDes">Descripción:</label>
-            <input type="text" name="txtDes" id="txtDes" placeholder="Descripción" required>
+            <input type="text" name="txtDes" id="txtDes" required>
             <br><br>
             <input type="submit" value="Guardar">
         </form>

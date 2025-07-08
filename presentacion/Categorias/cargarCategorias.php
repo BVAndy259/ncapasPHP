@@ -13,26 +13,34 @@
         <table border="1" cellpadding="5" cellspacing="0">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th>ID</th>
                     <th>Nombre</th>
-                    <th>Id Familia</th>
+                    <th>ID Familia</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                     require_once '../../logica/LCategoria.php';
                     $log=new LCategoria();
-                    $categorias=$log->cargar();
-                    foreach($categorias as $cat){
+                    foreach($log->cargar() as $categoria){
                 ?>
                 <tr>
-                    <td><?=$cat->getIdCategoria()?></td>
-                    <td><?=$cat->getNombre()?></td>   
-                    <td><?=$cat->getIdFamilia()?></td>    
+                    <td><?=$categoria->getIdCategoria()?></td>
+                    <td><?=$categoria->getNombre()?></td>   
+                    <td><?=$categoria->getIdFamilia()?></td>    
+                    <td>
+                        <form method="GET" action="modificarCategoria.php" style="display: inline;">
+                            <input type="hidden" name="id" value="<?=$categoria->getIdCategoria()?>">
+                            <button type="submit">Modificar</button>
+                        </form>
+                        <form method="POST" action="eliminarCategoria.php" style="display: inline;">
+                            <input type="hidden" name="id" value="<?=$categoria->getIdCategoria()?>">
+                            <button type="submit" onclick="return confirm('¿Está seguro de eliminar esta categoria?')">Eliminar</button>
+                        </form>
+                    </td>
                 </tr>
-                <?php
-                    }
-                ?>
+                <?php } ?>
             </tbody>
         </table>
     </div>

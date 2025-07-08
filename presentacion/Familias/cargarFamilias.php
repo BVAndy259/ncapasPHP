@@ -34,16 +34,13 @@
                             <input type="hidden" name="id" value="<?=$familia->getIdFamilia()?>">
                             <button type="submit">Modificar</button>
                         </form>
-
                         <form method="POST" action="eliminarFamilia.php" style="display: inline;">
                             <input type="hidden" name="id" value="<?=$familia->getIdFamilia()?>">
-                            <button type="submit" onclick="return confirm('¿Está seguro de eliminar esta familia?')">Borrar</button>
+                            <button type="submit" onclick="return confirm('¿Está seguro de eliminar esta familia?')">Eliminar</button>
                         </form>
                     </td>
                 </tr>
-                <?php
-                    }
-                ?>
+                <?php } ?>
             </tbody>
         </table>
     </div>
