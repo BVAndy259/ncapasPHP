@@ -9,9 +9,9 @@
 <body>
     <div>
         <?php
-            require_once '../logica/LFamilia.php';
-            require_once '../logica/LCategoria.php';
-            require_once '../logica/LProducto.php';
+            require_once '../../logica/LFamilia.php';
+            require_once '../../logica/LCategoria.php';
+            require_once '../../logica/LProducto.php';
         ?>
         <h1>Insersión de Productos</h1><hr>
         <form action="" method="post">

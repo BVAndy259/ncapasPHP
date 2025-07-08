@@ -8,6 +8,7 @@
         {
             return $this->idcategoria;
         }
+        
         public function setIdCategoria($idcategoria)
         {
             $this->idcategoria = $idcategoria;

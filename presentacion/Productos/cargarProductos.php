@@ -22,7 +22,7 @@
             </thead>
             <tbody>
                 <?php
-                    require_once '../logica/LProducto.php';
+                    require_once '../../logica/LProducto.php';
                     $log=new LProducto();
                     $productos=$log->cargar();
                     foreach($productos as $pro){

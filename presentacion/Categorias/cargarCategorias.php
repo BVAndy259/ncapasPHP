@@ -7,27 +7,28 @@
 </head>
 <body>
     <div>
-        <h1>Listado de Familias</h1>
+        <h1>Mis Categorias</h1>
         <hr>
-        <a href="guardarfamilia.php">Crear Nuevo</a>
+        <a href="guardarcategoria.php">Crear Nuevo</a>
         <table border="1" cellpadding="5" cellspacing="0">
             <thead>
                 <tr>
-                    <td>Id</td>
-                    <td>Nombre</td>
-                    <td>Descripción</td>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Id Familia</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
-                    require_once '../logica/LFamilia.php';
-                    $log=new LFamilia();
-                    foreach($log->cargar() as $familia){
+                    require_once '../../logica/LCategoria.php';
+                    $log=new LCategoria();
+                    $categorias=$log->cargar();
+                    foreach($categorias as $cat){
                 ?>
                 <tr>
-                    <td><?=$familia->getIdFamilia()?></td>
-                    <td><?=$familia->getNombre()?></td>
-                    <td><?=$familia->getDescripcion()?></td>
+                    <td><?=$cat->getIdCategoria()?></td>
+                    <td><?=$cat->getNombre()?></td>   
+                    <td><?=$cat->getIdFamilia()?></td>    
                 </tr>
                 <?php
                     }

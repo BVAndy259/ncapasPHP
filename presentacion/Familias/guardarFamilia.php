@@ -18,13 +18,13 @@
 </body>
 </html>
 <?php
-    require_once '../logica/LFamilia.php';
+    require_once '../../logica/LFamilia.php';
     if($_POST){
         $fam=new Familia();
         $fam->setNombre($_POST['txtNom']);
         $fam->setDescripcion($_POST['txtDes']);
         $log=new LFamilia();
         $log->guardar($fam);
-        header('Location: cargarfamilias.php');
+        header('Location: cargarFamilias.php');
     }
 ?>

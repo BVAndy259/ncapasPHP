@@ -7,8 +7,8 @@
 </head>
 <body>
     <?php
-        require_once '../logica/LFamilia.php';
-        require_once '../logica/LCategoria.php';
+        require_once '../../logica/LFamilia.php';
+        require_once '../../logica/LCategoria.php';
     ?>
     <div>
         <h1>Módulo de Inserción</h1>
@@ -42,6 +42,6 @@
         $logCategoria=new LCategoria();
         $logCategoria->guardar($cat);
 
-        header('Location: cargarcategorias.php');
+        header('Location: cargarCategorias.php');
     }
 ?>

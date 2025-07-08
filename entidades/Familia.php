@@ -27,6 +27,5 @@
         public function setDescripcion($descripcion){
             $this->descripcion=$descripcion;
         }
-
     }
 ?>
