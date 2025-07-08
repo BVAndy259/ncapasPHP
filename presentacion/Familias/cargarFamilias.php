@@ -9,14 +9,14 @@
     <div>
         <h1>Listado de Familias</h1>
         <hr>
-        <a href="guardarfamilia.php">Crear Nuevo</a>
+        <a href="guardarFamilia.php">Crear Nuevo</a>
         <table border="1" cellpadding="5" cellspacing="0">
             <thead>
                 <tr>
-                    <td>Id</td>
-                    <td>Nombre</td>
-                    <td>Descripción</td>
-                    <td>Acciones</td>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Descripción</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -30,8 +30,15 @@
                     <td><?=$familia->getNombre()?></td>
                     <td><?=$familia->getDescripcion()?></td>
                     <td>
-                        <a href="modificarFamilia.php?id=<?=$familia->getIdFamilia()?>">Modificar</a>
-                        <a href="eliminarFamilia.php?id=<?=$familia->getIdFamilia()?>">Eliminar</a>
+                        <form method="GET" action="modificarFamilia.php" style="display: inline;">
+                            <input type="hidden" name="id" value="<?=$familia->getIdFamilia()?>">
+                            <button type="submit">Modificar</button>
+                        </form>
+
+                        <form method="POST" action="eliminarFamilia.php" style="display: inline;">
+                            <input type="hidden" name="id" value="<?=$familia->getIdFamilia()?>">
+                            <button type="submit" onclick="return confirm('¿Está seguro de eliminar esta familia?')">Borrar</button>
+                        </form>
                     </td>
                 </tr>
                 <?php
