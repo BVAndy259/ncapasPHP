@@ -19,7 +19,8 @@
             </thead>
             <tbody>
                 <?php
-                    require_once '../logica/LCategoria.php';
+                    require_once '../../logica/LCategoria.php';
+                    require_once '../../entidades/Categoria.php';
                     $log=new LCategoria();
                     $categorias=$log->cargarPorFamilia($_GET['idfam']);
                     foreach($categorias as $cat){

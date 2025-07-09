@@ -1,5 +1,5 @@
 <?php
-    require_once '../../logica/LCategoria.php';
+    require_once '../logica/LCategoria.php';
     $idfam=$_GET['idfam'];
     $log=new LCategoria();
     $categorias=$log->cargarPorFamilia($idfam);
