@@ -10,6 +10,7 @@
         <h1>Listado de Familias</h1>
         <hr>
         <a href="guardarFamilia.php">Crear Nuevo</a>
+        <a href="../../index.php">Página principal</a>
         <table border="1" cellpadding="5" cellspacing="0">
             <thead>
                 <tr>

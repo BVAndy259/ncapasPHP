@@ -73,9 +73,7 @@
                     <option value="<?=$fam->getIdFamilia()?>" <?= ($fam->getIdFamilia() == $idfamilia) ? 'selected' : '' ?>>
                         <?=$fam->getNombre()?>
                     </option>
-                    <?php
-                        }
-                    ?>
+                    <?php } ?>
                 </select>
                 <br><br>
                 <input type="submit" value="Modificar">
