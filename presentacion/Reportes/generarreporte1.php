@@ -22,7 +22,8 @@
             <?php
                 }
             ?>
-        </select>
+        </select><br><br>
+        <a href="../../index.php">Página Principal</a>
     </div>
 </body>
 </html>

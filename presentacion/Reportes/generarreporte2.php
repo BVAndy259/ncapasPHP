@@ -23,11 +23,10 @@
             <?php
                 }
             ?>
-        </select>
+        </select><br><br>
+        <a href="../../index.php">Página Principal</a>
     </div>
-    <div id="res">
-
-    </div>
+    <div id="res"></div>
 </body>
 </html>
 <script>
