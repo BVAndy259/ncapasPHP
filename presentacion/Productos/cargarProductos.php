@@ -9,7 +9,7 @@
     <div>
         <h1>Mis Productos</h1>
         <hr>
-        <a href="guardarProductos.php">Crear Nuevo</a>
+        <a href="guardarProducto.php">Crear Nuevo</a>
         <table border="1" cellpadding="5" cellspacing="0">
             <thead>
                 <tr>
@@ -18,25 +18,33 @@
                     <th>Stock</th>
                     <th>Monto</th>
                     <th>ID Categoria</th>
+                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                     require_once '../../logica/LProducto.php';
                     $log=new LProducto();
-                    $productos=$log->cargar();
-                    foreach($productos as $pro){
+                    foreach($log->cargar() as $producto){
                 ?>
                 <tr>
-                    <td><?=$pro->getIdProducto()?></td>
-                    <td><?=$pro->getNombre()?></td>   
-                    <td><?=$pro->getStock()?></td>
-                    <td><?=$pro->getMonto()?></td>    
-                    <td><?=$pro->getIdCategoria()?></td>    
+                    <td><?=$producto->getIdProducto()?></td>
+                    <td><?=$producto->getNombre()?></td>   
+                    <td><?=$producto->getStock()?></td>
+                    <td><?=$producto->getMonto()?></td>    
+                    <td><?=$producto->getIdCategoria()?></td>   
+                    <td>
+                        <form method="GET" action="modificarProducto.php" style="display: inline;">
+                            <input type="hidden" name="id" value="<?=$producto->getIdProducto()?>">
+                            <button type="submit">Modificar</button>
+                        </form>
+                        <form method="POST" action="eliminarProducto.php" style="display: inline;">
+                            <input type="hidden" name="id" value="<?=$producto->getIdProducto()?>">
+                            <button type="submit" onclick="return confirm('¿Está seguro de eliminar este producto?')">Eliminar</button>
+                        </form>
+                    </td> 
                 </tr>
-                <?php
-                    }
-                ?>
+                <?php } ?>
             </tbody>
         </table>
     </div>
