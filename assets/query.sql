@@ -27,19 +27,21 @@ CREATE TABLE producto (
 
 --=> Inserción de datos
 --==> Inserción de familias
-INSERT INTO familia (nombre, descripcion) VALUES ('Bebidas','Todo bebidas');
-INSERT INTO familia (nombre, descripcion) VALUES ('Lácteos','Todo lácteos');
-INSERT INTO familia (nombre, descripcion) VALUES ('Limpieza', 'Todo limpieza');
-INSERT INTO familia (nombre, descripcion) VALUES ('Alimentos', 'Todo alimentos');
+INSERT INTO familia (nombre, descripcion) VALUES ('Bebidas','Todo bebidas'),
+('Lácteos','Todo lácteos'),
+('Limpieza', 'Todo limpieza'),
+('Alimentos', 'Todo alimentos');
 
 --==> Inserción de categorías
-insert into categoria (nombre, idfamilia) values ('Agua Mineral',1);
-insert into categoria (nombre, idfamilia) values ('Leche',2);
-insert into categoria (nombre, idfamilia) values ('Detergentes',3);
-insert into categoria (nombre, idfamilia) values ('Carnes',4);
+INSERT INTO categoria (nombre, idfamilia) VALUES 
+('Agua Mineral',1),
+('Leche',2), 
+('Detergentes',3), 
+('Carnes',4);
 
 --==> Inserción de productos
-INSERT INTO producto (nombre, stock, monto, idcategoria) VALUES ('Agua Cielo', 10, 2.5, 1);
-INSERT INTO producto (nombre, stock, monto, idcategoria) VALUES ('Leche condensada', 20, 1.5, 2);
-INSERT INTO producto (nombre, stock, monto, idcategoria) VALUES ('Detergente Líquido', 30, 3.0, 3);
-INSERT INTO producto (nombre, stock, monto, idcategoria) VALUES ('Carne de Res', 25, 5.0, 4);
+INSERT INTO producto (nombre, stock, monto, idcategoria) VALUES 
+('Agua Cielo', 10, 2.5, 1),
+('Leche condensada', 20, 1.5, 2),
+('Detergente Líquido', 30, 3.0, 3),
+('Carne de Res', 25, 5.0, 4);
