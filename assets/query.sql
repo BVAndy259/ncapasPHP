@@ -27,7 +27,8 @@ CREATE TABLE producto (
 
 --=> Inserción de datos
 --==> Inserción de familias
-INSERT INTO familia (nombre, descripcion) VALUES ('Bebidas','Todo bebidas'),
+INSERT INTO familia (nombre, descripcion) VALUES 
+('Bebidas','Todo bebidas'),
 ('Lácteos','Todo lácteos'),
 ('Limpieza', 'Todo limpieza'),
 ('Alimentos', 'Todo alimentos');
