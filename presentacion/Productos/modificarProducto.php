@@ -1,59 +1,11 @@
-<?php
-    require_once '../../logica/LProducto.php';
-    require_once '../../logica/LCategoria.php';
-    require_once '../../entidades/Producto.php';
-
-    $nombre = '';
-    $stock = '';
-    $monto = '';
-    $idcategoria = '';
-    $error = '';
-
-    $id = isset($_GET['id']) ? $_GET['id'] : null;
-    if ($id) {
-        $log = new LProducto();
-        $producto = $log->cargarPorId($id);
-        if ($producto) {
-            $nombre = $producto->getNombre();
-            $stock = $producto->getStock();
-            $monto = $producto->getMonto();
-            $idcategoria = $producto->getIdCategoria();
-        } else {
-            $error = "Producto no encontrado.";
-        }
-    } else {
-        $error = "ID de producto no proporcionado.";
-    }
-
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$error) {
-        $nombre = trim($_POST['txtNom']);
-        $stock = trim($_POST['txtStock']);
-        $monto = trim($_POST['txtMonto']);
-        $idcategoria = trim($_POST['cbxCat']);
-
-        if (empty($nombre) || empty($stock) || empty($monto) || $idcategoria == 'Seleccione Categoría') {
-            $error = "Todos los campos son obligatorios.";
-        } else {
-            $producto = new Producto();
-            $producto->setIdProducto($id);
-            $producto->setNombre($nombre);
-            $producto->setStock($stock);
-            $producto->setMonto($monto);
-            $producto->setIdCategoria($idcategoria);
-
-            $log->modificar($producto);
-            header("Location: cargarProductos.php");
-            exit();
-        }
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificación de Productos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
 </head>
 <body>
     <div>
@@ -94,5 +46,55 @@
             <a href="cargarProductos.php">Volver al listado</a>
         <?php endif; ?>
     </div>
+
+    <?php
+        require_once '../../logica/LProducto.php';
+        require_once '../../logica/LCategoria.php';
+        require_once '../../entidades/Producto.php';
+
+        $nombre = '';
+        $stock = '';
+        $monto = '';
+        $idcategoria = '';
+        $error = '';
+
+        $id = isset($_GET['id']) ? $_GET['id'] : null;
+        if ($id) {
+            $log = new LProducto();
+            $producto = $log->cargarPorId($id);
+            if ($producto) {
+                $nombre = $producto->getNombre();
+                $stock = $producto->getStock();
+                $monto = $producto->getMonto();
+                $idcategoria = $producto->getIdCategoria();
+            } else {
+                $error = "Producto no encontrado.";
+            }
+        } else {
+            $error = "ID de producto no proporcionado.";
+        }
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST' && !$error) {
+            $nombre = trim($_POST['txtNom']);
+            $stock = trim($_POST['txtStock']);
+            $monto = trim($_POST['txtMonto']);
+            $idcategoria = trim($_POST['cbxCat']);
+
+            if (empty($nombre) || empty($stock) || empty($monto) || $idcategoria == 'Seleccione Categoría') {
+                $error = "Todos los campos son obligatorios.";
+            } else {
+                $producto = new Producto();
+                $producto->setIdProducto($id);
+                $producto->setNombre($nombre);
+                $producto->setStock($stock);
+                $producto->setMonto($monto);
+                $producto->setIdCategoria($idcategoria);
+
+                $log->modificar($producto);
+                header("Location: cargarProductos.php");
+                exit();
+            }
+        }
+    ?>
 </body>
 </html>

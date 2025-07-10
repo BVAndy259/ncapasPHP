@@ -1,45 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reporte Ajax de Familias</title>
-    <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Reporte AJAX de Familias</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
 </head>
 <body>
-    <div>
-        <h1>Reporte - Categoria Por Familia</h1>
-        <hr>
-        <select name="cbxFam" id="cbxFam">
-            <option>Seleccione Familia</option>
-            <?php
-                require_once '../../logica/LFamilia.php';
-                require_once '../../entidades/Familia.php';
-                $logFamilia=new LFamilia();
-                $familias=$logFamilia->cargar();
-                foreach($familias as $fam){
-            ?>
-            <option value="<?=$fam->getIdFamilia()?>"><?=$fam->getNombre()?></option>
-            <?php
-                }
-            ?>
-        </select><br><br>
-        <a href="../../index.php">Página Principal</a>
+  <div class="container mt-5">
+    <h1 class="text-info mb-4">Reporte - Categoría por Familia (AJAX)</h1>
+    <hr>
+
+    <div class="mb-4">
+      <label for="cbxFam" class="form-label">Seleccione una familia:</label>
+      <select name="cbxFam" id="cbxFam" class="form-select">
+        <option value="">Seleccione Familia</option>
+        <?php
+          require_once '../../logica/LFamilia.php';
+          require_once '../../entidades/Familia.php';
+          $logFamilia = new LFamilia();
+          $familias = $logFamilia->cargar();
+          foreach ($familias as $fam) {
+        ?>
+          <option value="<?= $fam->getIdFamilia() ?>"><?= $fam->getNombre() ?></option>
+        <?php } ?>
+      </select>
     </div>
-    <div id="res"></div>
+
+    <a href="../../index.php" class="btn btn-secondary mb-4">Página Principal</a>
+
+    <div id="res" class="mt-3"></div>
+  </div>
+
+  <script>
+    $('#cbxFam').change(function () {
+      let idfam = $('#cbxFam').val();
+      if (idfam !== "") {
+        $.ajax({
+          url: 'reporte1.php',
+          data: { idfam: idfam },
+          type: 'get',
+          success: function (res) {
+            $('#res').html(res);
+          }
+        });
+      } else {
+        $('#res').html('');
+      }
+    });
+  </script>
 </body>
 </html>
-<script>
-    $('#cbxFam').change(function(){
-        idfam=$('#cbxFam').val();
-        param={'idfam':idfam};
-        $.ajax({
-            url:'reporte1.php',
-            data:param,
-            type:'get',
-            success:function(res){
-                $('#res').html(res);
-            }
-        });
-    });
-</script>
